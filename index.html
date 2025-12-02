@@ -633,6 +633,10 @@
                         <input type="hidden" name="_next" value="https://your-site.github.io/thanks.html">
                         <!-- CAPTCHA -->
                         <input type="hidden" name="_captcha" value="true">
+                        <!-- Honeypot -->
+                        <input type="text" name="_honey" style="display:none">
+                        <!-- Disable autocomplete -->
+                        <form autocomplete="off">
                         <button type="submit" class="w-full px-8 py-3 bg-gradient-to-r from-aurora-green to-aurora-blue rounded-lg text-dark-bg font-semibold hover:shadow-lg hover:shadow-aurora-green/50 transition transform hover:scale-105">Send Message</button>
                     </form>
                 </div>
@@ -705,7 +709,7 @@
 
         // animated particles
         const auroraColors = ["bg-aurora-green", "bg-aurora-blue", "bg-aurora-purple", "bg-aurora-pink", "bg-aurora-red", "bg-aurora-yellow", "bg-aurora-orange"];
-        const numberOfDots = 100;
+        const numberOfDots = 240;
         const container = document.getElementById("floating-dots-container");
         function createRandomDot() {
             const dot = document.createElement("div");
