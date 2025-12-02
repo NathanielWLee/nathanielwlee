@@ -208,7 +208,7 @@
         </div>
         <!-- Animated particles -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="floating-dots-container absolute inset-0 overflow-hidden pointer-events-none"></div>
+            <div id="floating-dots-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
         </div>
     </section>
 
@@ -258,10 +258,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Animated particles -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="floating-dots-container absolute inset-0 overflow-hidden pointer-events-none"></div>
         </div>
     </section>
 
@@ -322,10 +318,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Animated particles -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="floating-dots-container absolute inset-0 overflow-hidden pointer-events-none"></div>
         </div>
     </section>
 
@@ -426,10 +418,6 @@
                 </div>
             </div>
         </div>
-        <!-- Animated particles -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="floating-dots-container absolute inset-0 overflow-hidden pointer-events-none"></div>
-        </div>
     </section>
 
     <!-- Projects Section -->
@@ -505,10 +493,6 @@
                 </div>
             </div>
         </div>
-        <!-- Animated particles -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="floating-dots-container absolute inset-0 overflow-hidden pointer-events-none"></div>
-        </div>
     </section>
 
     <!-- Blog Section -->
@@ -559,10 +543,6 @@
                 </article>
             </div>
         </div>
-        <!-- Animated particles -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="floating-dots-container absolute inset-0 overflow-hidden pointer-events-none"></div>
-        </div>
     </section>
 
     <!-- Contact Section -->
@@ -611,10 +591,6 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <!-- Animated particles -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="floating-dots-container absolute inset-0 overflow-hidden pointer-events-none"></div>
         </div>
     </section>
 
@@ -684,58 +660,51 @@
         // animated particles
         const auroraColors = ["bg-aurora-green", "bg-aurora-blue", "bg-aurora-purple", "bg-aurora-pink"];
         const numberOfDots = 12;
-        // Get ALL containers
-        const containers = document.querySelectorAll(".floating-dots-container");
-    
-        containers.forEach(container => {
-            for (let i = 0; i < numberOfDots; i++) {
-                const dot = document.createElement("div");
-    
-                // Random color
-                const color = auroraColors[Math.floor(Math.random() * auroraColors.length)];
-    
-                // Random size (4–12px)
-                const size = Math.floor(Math.random() * 8) + 4;
-    
-                dot.className = `absolute rounded-full ${color}`;
-                dot.style.width = `${size}px`;
-                dot.style.height = `${size}px`;
-    
-                // Random initial position
-                const top = Math.random() * 100;
-                const left = Math.random() * 100;
-    
-                dot.style.top = top + "%";
-                dot.style.left = left + "%";
-    
-                // Add fade + float animation
-                const fadeDuration = Math.random() * 4 + 3;
-                dot.style.opacity = 0;
-                dot.style.transition = `opacity ${fadeDuration}s ease-in-out`;
-    
-                setTimeout(() => dot.style.opacity = 1, 100);
-    
-                function float() {
-                    const newTop = Math.random() * 100;
-                    const newLeft = Math.random() * 100;
-                    const duration = Math.random() * 6 + 4;
-    
-                    dot.style.transition = `
-                        top ${duration}s ease-in-out,
-                        left ${duration}s ease-in-out,
-                        opacity ${fadeDuration}s ease-in-out
-                    `;
-    
-                    dot.style.top = `${newTop}%`;
-                    dot.style.left = `${newLeft}%`;
-                    dot.style.opacity = Math.random() * 0.75 + 0.25;
-                }
-    
-                setInterval(float, Math.random() * 4000 + 4000);
-    
-                container.appendChild(dot);
+        const container = document.getElementById("floating-dots-container");
+        function createRandomDot() {
+            const dot = document.createElement("div");
+            // Pick random Tailwind background class
+            const color = auroraColors[Math.floor(Math.random() * auroraColors.length)];
+            // Random size (4px–12px)
+            const size = Math.floor(Math.random() * 8) + 4; // 4 → 12
+            dot.className = `absolute rounded-full ${color}`;
+            dot.style.width = `${size}px`;
+            dot.style.height = `${size}px`;
+            // Random start location
+            function randomPosition() {
+                return {
+                    top: Math.random() * 100,
+                    left: Math.random() * 100
+                };
             }
-        });
+            // Set initial position
+            let pos = randomPosition();
+            dot.style.top = pos.top + "%";
+            dot.style.left = pos.left + "%";
+            // Random fade animation
+            const fadeDuration = Math.random() * 4 + 3; // 3–7 sec
+            dot.style.opacity = 0;
+            dot.style.transition = `opacity ${fadeDuration}s ease-in-out`;
+            // Start faded in
+            setTimeout(() => { dot.style.opacity = 1; }, 100);
+            // Smooth drifting movement every few seconds
+            function float() {
+                const newPos = randomPosition();
+                const duration = Math.random() * 6 + 4; // 4–10 sec
+                dot.style.transition = `top ${duration}s ease-in-out, left ${duration}s ease-in-out, opacity ${fadeDuration}s ease-in-out`;
+                dot.style.top = newPos.top + "%";
+                dot.style.left = newPos.left + "%";
+                // Random fade in/out while floating
+                dot.style.opacity = Math.random() * 0.75 + 0.25; // 0.25–1 opacity
+            }
+            // Move repeatedly
+            setInterval(float, Math.random() * 4000 + 4000); // 4–8 sec
+            container.appendChild(dot);
+        }
+        // Create all dots
+        for (let i = 0; i < numberOfDots; i++) {
+            createRandomDot();
+        }
     </script>
 </body>
 </html>
