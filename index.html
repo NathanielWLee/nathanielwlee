@@ -27,6 +27,8 @@
                         'aurora-blue': '#00aaff',
                         'aurora-purple': '#aa00ff',
                         'aurora-pink': '#ff00aa',
+                        'aurora-yellow': '#ffee00',
+                        'aurora-red': '#ff0044',
                         'dark-bg': '#0a0e1a',
                         'dark-card': '#1a1f2e',
                         'dark-border': '#2a2f3e'
@@ -156,6 +158,7 @@
                 <ul class="hidden md:flex space-x-8">
                     <li><a href="#home" class="hover:text-aurora-green transition">Home</a></li>
                     <li><a href="#about" class="hover:text-aurora-green transition">About</a></li>
+                    <li><a href="#education" class="hover:text-aurora-green transition">Education</a></li>
                     <li><a href="#experience" class="hover:text-aurora-green transition">Experience</a></li>
                     <li><a href="#skills" class="hover:text-aurora-green transition">Skills</a></li>
                     <li><a href="#projects" class="hover:text-aurora-green transition">Projects</a></li>
@@ -171,6 +174,7 @@
             <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2">
                 <a href="#home" class="block py-2 hover:text-aurora-green">Home</a>
                 <a href="#about" class="block py-2 hover:text-aurora-green">About</a>
+                <a href="#education" class="block py-2 hover:text-aurora-green">Education</a>
                 <a href="#experience" class="block py-2 hover:text-aurora-green">Experience</a>
                 <a href="#skills" class="block py-2 hover:text-aurora-green">Skills</a>
                 <a href="#projects" class="block py-2 hover:text-aurora-green">projects</a>
@@ -231,30 +235,75 @@
                         I work with cutting-edge technologies to build scalable, performant applications that
                         push the boundaries of what's possible on the web.
                     </p>
-                    <div class="grid grid-cols-2 gap-4 pt-4">
-                        <div class="bg-dark-card p-4 rounded-lg border border-dark-border">
-                            <div class="text-3xl font-bold text-aurora-green">100+</div>
-                            <div class="text-sm text-gray-400">Projects Completed</div>
-                        </div>
-                        <div class="bg-dark-card p-4 rounded-lg border border-dark-border">
-                            <div class="text-3xl font-bold text-aurora-blue">50+</div>
-                            <div class="text-sm text-gray-400">Happy Clients</div>
-                        </div>
-                        <div class="bg-dark-card p-4 rounded-lg border border-dark-border">
-                            <div class="text-3xl font-bold text-aurora-purple">7+</div>
-                            <div class="text-sm text-gray-400">Years Experience</div>
-                        </div>
-                        <div class="bg-dark-card p-4 rounded-lg border border-dark-border">
-                            <div class="text-3xl font-bold text-aurora-pink">15+</div>
-                            <div class="text-sm text-gray-400">Awards Won</div>
-                        </div>
-                    </div>
                 </div>
                 <div class="relative">
                     <div class="w-80 h-80 mx-auto rounded-full bg-gradient-to-br from-aurora-green via-aurora-blue to-aurora-purple p-1">
                         <div class="w-full h-full rounded-full bg-dark-bg flex items-center justify-center overflow-hidden">
                             <img src="images/sfportrait.jpg" alt="Profile photo" class="w-full h-full object-cover rounded-full">
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-dark-card/30">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Education</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="relative pl-8 border-l-2 border-aurora-green">
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-aurora-green rounded-full"></div>
+                    <div class="bg-dark-card p-6 rounded-lg card-hover">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-aurora-green">Master of Science in Computer Science</h3>
+                            <span class="text-sm text-gray-400">January 2026 - Present</span>
+                        </div>
+                        <p class="text-gray-300 font-medium mb-2">University of Illinois Urbana-Champaign - Grainer </p>
+                        <p class="text-gray-400">
+                            Relevant Coursework: 
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="relative pl-8 border-l-2 border-aurora-green">
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-aurora-green rounded-full"></div>
+                    <div class="bg-dark-card p-6 rounded-lg card-hover">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-aurora-green">Master of Computer Science</h3>
+                            <span class="text-sm text-gray-400">August 2025 - December 2025</span>
+                        </div>
+                        <p class="text-gray-300 font-medium mb-2">University of Illinois Urbana-Champaign - Grainger College of Engineering</p>
+                        <p class="text-gray-400">
+                            Relevant Coursework: 
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 border-l-2 border-aurora-blue">
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-aurora-blue rounded-full"></div>
+                    <div class="bg-dark-card p-6 rounded-lg card-hover">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-aurora-blue">Bachelors of Science in Computer Science and Engineering</h3>
+                            <span class="text-sm text-gray-400">August 2018 - May 2022</span>
+                        </div>
+                        <p class="text-gray-300 font-medium mb-2">The Ohio State University - College of Engineering</p>
+                        <p class="text-gray-400">
+                            Relevant Coursework: 
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 border-l-2 border-aurora-purple">
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-aurora-purple rounded-full"></div>
+                    <div class="bg-dark-card p-6 rounded-lg card-hover">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-sm text-gray-400">August 2014 - June 2018</span>
+                        </div>
+                        <p class="text-gray-300 font-medium mb-2">Wooster High School</p>
+                        <p class="text-gray-400">
+                            Relevant Coursework: 
+                        </p>
                     </div>
                 </div>
             </div>
@@ -457,9 +506,9 @@
                             <span class="px-2 py-1 bg-aurora-green/20 text-aurora-green rounded text-xs">Python</span>
                             <span class="px-2 py-1 bg-aurora-blue/20 text-aurora-blue rounded text-xs">TensorFlow</span>
                             <span class="px-2 py-1 bg-aurora-purple/20 text-aurora-purple rounded text-xs">Keras</span>
-                            <span class="px-2 py-1 bg-aurora-purple/20 text-aurora-purple rounded text-xs">Scikit-learn</span>
-                            <span class="px-2 py-1 bg-aurora-purple/20 text-aurora-purple rounded text-xs">NumPy</span>
-                            <span class="px-2 py-1 bg-aurora-purple/20 text-aurora-purple rounded text-xs">Pandas</span>
+                            <span class="px-2 py-1 bg-aurora-pink/20 text-aurora-pink rounded text-xs">Scikit-learn</span>
+                            <span class="px-2 py-1 bg-aurora-red/20 text-aurora-red rounded text-xs">NumPy</span>
+                            <span class="px-2 py-1 bg-aurora-yellow/20 text-aurora-yellow rounded text-xs">Pandas</span>
                         </div>
                         <div class="flex space-x-4">
                             <a href="#" class="text-aurora-green hover:text-aurora-blue transition">
@@ -480,9 +529,9 @@
                             <span class="px-2 py-1 bg-aurora-purple/20 text-aurora-purple rounded text-xs">Python</span>
                             <span class="px-2 py-1 bg-aurora-green/20 text-aurora-green rounded text-xs">Django</span>
                             <span class="px-2 py-1 bg-aurora-blue/20 text-aurora-blue rounded text-xs">Flask</span>
-                            <span class="px-2 py-1 bg-aurora-purple/20 text-aurora-purple rounded text-xs">React</span>
-                            <span class="px-2 py-1 bg-aurora-purple/20 text-aurora-purple rounded text-xs">Spotify API</span>
-                            <span class="px-2 py-1 bg-aurora-purple/20 text-aurora-purple rounded text-xs">Amazon Lex</span>
+                            <span class="px-2 py-1 bg-aurora-pink/20 text-aurora-pink rounded text-xs">React</span>
+                            <span class="px-2 py-1 bg-aurora-red/20 text-aurora-red rounded text-xs">Spotify API</span>
+                            <span class="px-2 py-1 bg-aurora-yellow/20 text-aurora-yellow rounded text-xs">Amazon Lex</span>
                         </div>
                         <div class="flex space-x-4">
                             <a href="#" class="text-aurora-green hover:text-aurora-blue transition">
@@ -658,7 +707,7 @@
         });
 
         // animated particles
-        const auroraColors = ["bg-aurora-green", "bg-aurora-blue", "bg-aurora-purple", "bg-aurora-pink"];
+        const auroraColors = ["bg-aurora-green", "bg-aurora-blue", "bg-aurora-purple", "bg-aurora-pink", "bg-aurora-red", "bg-aurora-yellow"];
         const numberOfDots = 12;
         const container = document.getElementById("floating-dots-container");
         function createRandomDot() {
