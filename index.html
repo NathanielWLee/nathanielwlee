@@ -155,7 +155,7 @@
     <nav class="fixed top-0 w-full bg-dark-bg/90 backdrop-blur-md border-b border-dark-border z-50">
         <div class="container mx-auto px-6 py-3">
             <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold gradient-text">Nathaniel Lee</div>
+                <div class="text-2xl font-bold gradient-text">NL</div>
                 <ul class="hidden md:flex space-x-8">
                     <li><a href="#home" class="hover:text-aurora-green transition">Home</a></li>
                     <li><a href="#about" class="hover:text-aurora-green transition">About</a></li>
@@ -193,17 +193,18 @@
                     Hello, I'm <span class="gradient-text">Nathaniel Lee</span>
                 </h1>
                 <p class="text-xl md:text-2xl text-gray-400 mb-8">Software Developer | System Engineer</p>
-                <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-12">
-                    Currently a Graduate Student in Computer Science at University of Illinois Urbana Champaign
-                    Experience in Software Development and IT at General Motors
-                </p>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-12">Currently a Graduate Student in Computer Science at University of Illinois Urbana Champaign</p>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-12">Experience in Software Development and IT at General Motors</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#projects" class="px-8 py-3 bg-gradient-to-r from-aurora-green to-aurora-blue rounded-full text-dark-bg font-semibold hover:shadow-lg hover:shadow-aurora-green/50 transition transform hover:scale-105">
-                        View My Work
+                    <a href="resume.pdf" download class="relative inline-block px-8 py-3 rounded-full text-aurora-green font-semibold transition transform hover:scale-105">
+                        <!-- Gradient Border Wrapper -->
+                        <span class="absolute inset-0 rounded-full p-[2px] bg-gradient-to-br from-aurora-green via-aurora-blue to-aurora-purple"></span>
+                        <!-- Inner Button -->
+                        <span class="relative block rounded-full bg-dark-bg text-white hover:shadow-lg hover:shadow-aurora-green/50 transition">
+                            Download CV
+                        </span>
                     </a>
-                    <a href="resume.pdf" class="px-8 py-3 border-2 border-aurora-green rounded-full hover:bg-aurora-green hover:text-dark-bg transition transform hover:scale-105">
-                        Download CV
-                    </a>
+                    <!-- <a href="resume.pdf" download class="px-8 py-3 border-2 border-aurora-green rounded-full hover:bg-aurora-green hover:text-dark-bg transition transform hover:scale-105">Download CV</a> -->
                 </div>
                 <div class="mt-12 flex justify-center space-x-6">
                     <a href="https://www.linkedin.com/in/nathaniel-l-658458187" class="text-2xl hover:text-aurora-blue transition"><i class="fab fa-linkedin"></i></a>
@@ -484,7 +485,7 @@
                             <span class="px-2 py-1 bg-aurora-pink/20 text-aurora-pink rounded text-xs">Forge API</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="#" class="text-aurora-green hover:text-aurora-blue transition">
+                            <a href="https://github.com/NathanielWLee/MCMods-1.21.1" class="text-aurora-green hover:text-aurora-blue transition">
                                 <i class="fab fa-github"></i> Code
                             </a>
                         </div>
@@ -507,7 +508,7 @@
                             <span class="px-2 py-1 bg-aurora-orange/20 text-aurora-orange rounded text-xs">Pandas</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="#" class="text-aurora-green hover:text-aurora-blue transition">
+                            <a href="https://github.com/NathanielWLee/WineAI-1" class="text-aurora-green hover:text-aurora-blue transition">
                                 <i class="fab fa-github"></i> Code
                             </a>
                         </div>
@@ -530,7 +531,7 @@
                             <span class="px-2 py-1 bg-aurora-orange/20 text-aurora-orange rounded text-xs">Amazon Lex</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="#" class="text-aurora-green hover:text-aurora-blue transition">
+                            <a href="https://github.com/NathanielWLee/Playlist-Recommender" class="text-aurora-green hover:text-aurora-blue transition">
                                 <i class="fab fa-github"></i> Code
                             </a>
                         </div>
@@ -545,7 +546,7 @@
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Blog Posts</h2>
             <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-                <article class="bg-dark-card rounded-lg overflow-hidden card-hover">
+                <!-- <article class="bg-dark-card rounded-lg overflow-hidden card-hover">
                     <div class="h-48 bg-gradient-to-br from-aurora-green to-aurora-blue"></div>
                     <div class="p-6">
                         <div class="text-sm text-gray-400 mb-2">March 15, 2024</div>
@@ -585,7 +586,7 @@
                             Read More →
                         </a>
                     </div>
-                </article>
+                </article> -->
             </div>
         </div>
     </section>
@@ -652,10 +653,7 @@
                 <a href="https://github.com/NathanielWLee" class="text-2xl hover:text-aurora-green transition"><i class="fab fa-github"></i></a>
             </div>
             <p class="text-gray-400">
-                © 2025 Nathaniel Lee Built with
-                <a href="https://github.com/OSSPhilippines/freefolio" class="text-aurora-green hover:text-aurora-blue transition">
-                    Freefolio
-                </a>
+                © 2025 Nathaniel Lee
             </p>
         </div>
     </footer>
