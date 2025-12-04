@@ -539,7 +539,7 @@
             </div>
         </div>
     </section>
-
+                
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-dark-card/30">
         <div class="container mx-auto px-6">
@@ -594,6 +594,15 @@
         </div>
     </section>
 
+    <section id="blog" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Blog Posts</h2>
+            <div class="max-w-6xl mx-auto">
+                <div id="strava-yearly" class="text-center text-white"></div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Footer -->
     <footer class="py-8 border-t border-dark-border">
         <div class="container mx-auto px-6 text-center">
@@ -703,6 +712,38 @@
         for (let i = 0; i < numberOfDots; i++) {
             createRandomDot();
         }
+
+        fetch("strava.json")
+  .then(r => r.json())
+  .then(data => {
+    const div = document.getElementById("strava-yearly");
+
+    function formatTime(sec) {
+      const h = Math.floor(sec/3600);
+      const m = Math.floor((sec%3600)/60);
+      return `${h}h ${m}m`;
+    }
+
+    function block(sport, label) {
+      return `
+        <div class="p-6 rounded-xl bg-dark-bg/50 border border-gray-700">
+          <h2 class="text-xl font-bold mb-2">${label}</h2>
+          <p><strong>${(data[sport].distance/1000).toFixed(1)} km</strong></p>
+          <p>${formatTime(data[sport].time)}</p>
+          <p>${data[sport].count} activities</p>
+        </div>
+      `;
+    }
+
+    div.innerHTML = `
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        ${block("Run", "Running")}
+        ${block("Ride", "Cycling")}
+        ${block("Swim", "Swimming")}
+      </div>
+      <p class="mt-4 text-sm opacity-60">Updated: ${data.updated}</p>
+    `;
+  });
     </script>
 </body>
 </html>
