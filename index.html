@@ -502,36 +502,41 @@
     <!-- Strava Section -->
     <section id="strava" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Yearly Activity Summary</h2>
-            <div class="activity-section">
-                <h4>Running</h4>
-                <ul>
-                    <li>Activities: <span id="run-count">--</span></li>
-                    <li>Distance: <span id="run-distance">--</span> mi</li>
-                    <li>Time: <span id="run-time">--</span></li>
-                    <li>Elev Gain: <span id="run-elev">--</span> ft</li>
-                </ul>
-            </div>
-            <div class="activity-section">
-                <h4>Cycling</h4>
-                <ul>
-                    <li>Activities: <span id="ride-count">--</span></li>
-                    <li>Distance: <span id="ride-distance">--</span> mi</li>
-                    <li>Time: <span id="ride-time">--</span></li>
-                    <li>Elev Gain: <span id="ride-elev">--</span> ft</li>
-                </ul>
-            </div>
-            <div class="activity-section">
-                <h4>Swimming</h4>
-                <ul>
-                    <li>Activities: <span id="swim-count">--</span></li>
-                    <li>Distance: <span id="swim-distance">--</span> yd</li>
-                    <li>Time: <span id="swim-time">--</span></li>
-                </ul>
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Strava Activity in 2026</h2>
+            <div class="max-w-4xl mx-auto">
+              <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Yearly Progress</h2>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <h4 class="text-[#FC4C02] font-bold tracking-widest uppercase text-xs mb-4 border-b pb-2">Running</h4>
+                  <ul class="space-y-3 text-sm">
+                    <li class="flex justify-between"><span class="text-gray-500">Activities</span><span id="run-count" class="font-semibold text-gray-800">--</span></li>
+                    <li class="flex justify-between"><span class="text-gray-500">Distance</span><span class="font-semibold text-gray-800"><span id="run-distance">--</span> mi</span></li>
+                    <li class="flex justify-between"><span class="text-gray-500">Time</span><span id="run-time" class="font-semibold text-gray-800">--</span></li>
+                    <li class="flex justify-between"><span class="text-gray-500">Elev Gain</span><span class="font-semibold text-gray-800"><span id="run-elev">--</span> ft</span></li>
+                  </ul>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <h4 class="text-[#FC4C02] font-bold tracking-widest uppercase text-xs mb-4 border-b pb-2">Cycling</h4>
+                  <ul class="space-y-3 text-sm">
+                    <li class="flex justify-between"><span class="text-gray-500">Activities</span><span id="ride-count" class="font-semibold text-gray-800">--</span></li>
+                    <li class="flex justify-between"><span class="text-gray-500">Distance</span><span class="font-semibold text-gray-800"><span id="ride-distance">--</span> mi</span></li>
+                    <li class="flex justify-between"><span class="text-gray-500">Time</span><span id="ride-time" class="font-semibold text-gray-800">--</span></li>
+                    <li class="flex justify-between"><span class="text-gray-500">Elev Gain</span><span class="font-semibold text-gray-800"><span id="ride-elev">--</span> ft</span></li>
+                  </ul>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <h4 class="text-[#FC4C02] font-bold tracking-widest uppercase text-xs mb-4 border-b pb-2">Swimming</h4>
+                  <ul class="space-y-3 text-sm">
+                    <li class="flex justify-between"><span class="text-gray-500">Activities</span><span id="swim-count" class="font-semibold text-gray-800">--</span></li>
+                    <li class="flex justify-between"><span class="text-gray-500">Distance</span><span class="font-semibold text-gray-800"><span id="swim-distance">--</span> yd</span></li>
+                    <li class="flex justify-between"><span class="text-gray-500">Time</span><span id="swim-time" class="font-semibold text-gray-800">--</span></li>
+                    <li class="flex justify-between"><span class="text-gray-500">Elev Gain</span><span class="font-semibold text-gray-800">0 ft</span></li>
+                  </ul>
+                </div>
+              </div>
             </div>
         </div>
     </section>
-    
     <script>
         function metersToMiles(meters) { return (meters * 0.000621371).toFixed(1); }
         function metersToFeet(meters) { return (meters * 3.28084).toFixed(0); }
@@ -551,13 +556,11 @@
                 document.getElementById('run-distance').innerText = metersToMiles(data.run.distance);
                 document.getElementById('run-time').innerText = secondsToHms(data.run.moving_time);
                 document.getElementById('run-elev').innerText = metersToFeet(data.run.elevation_gain);
-    
                 // Update Cycling
                 document.getElementById('ride-count').innerText = data.ride.count;
                 document.getElementById('ride-distance').innerText = metersToMiles(data.ride.distance);
                 document.getElementById('ride-time').innerText = secondsToHms(data.ride.moving_time);
                 document.getElementById('ride-elev').innerText = metersToFeet(data.ride.elevation_gain);
-    
                 // Update Swimming
                 document.getElementById('swim-count').innerText = data.swim.count;
                 document.getElementById('swim-distance').innerText = metersToYards(data.swim.distance);
