@@ -1,59 +1,38 @@
-name: Update Strava Yearly Summary
+name: Update Strava Stats
 
 on:
   schedule:
-    - cron: "0 */12 * * *"
-  workflow_dispatch:
+    - cron: '0 0 * * *' # Runs at midnight UTC every day
+  workflow_dispatch: # Allows you to run it manually from the Actions tab
 
 jobs:
-  build:
+  update-stats:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write # Important: allows the action to push changes
+    
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Get Access Token
-        run: |
-          RESPONSE=$(curl -s -X POST https://www.strava.com/oauth/token \
-            -d client_id=${{ secrets.CLIENT_ID }} \
-            -d client_secret=${{ secrets.CLIENT_SECRET }} \
-            -d grant_type=refresh_token \
-            -d refresh_token=${{ secrets.REFRESH_TOKEN }})
-
-          echo "ACCESS_TOKEN=$(echo $RESPONSE | jq -r .access_token)" >> $GITHUB_ENV
-
-      - name: Fetch activities this year
-        run: |
-          START=$(date -d "$(date +%Y)-01-01" +%s)
-
-          curl -s -G https://www.strava.com/api/v3/athlete/activities \
-            -d after=$START \
-            -d per_page=200 \
-            -H "Authorization: Bearer $ACCESS_TOKEN" \
-            > activities.json
-
-      - name: Debug Strava response
-        run: |
-          echo "===== activities.json ====="
-          cat activities.json
-          
-      - name: Build yearly summary
-        run: |
-          echo "{" > strava.json
-
-          for sport in Run Ride Swim; do
-            DIST=$(jq "[.[] | select(.sport_type==\"$sport\") | .distance] | add // 0" activities.json)
-            TIME=$(jq "[.[] | select(.sport_type==\"$sport\") | .moving_time] | add // 0" activities.json)
-            COUNT=$(jq "[.[] | select(.sport_type==\"$sport\")] | length" activities.json)
-            ELEV=$(jq "[.[] | select(.sport_type==\"$sport\") | .total_elevation_gain] | add // 0" activities.json)
-
-            echo "\"$sport\": {\"distance\": $DIST, \"time\": $TIME, \"count\": $COUNT, \"elevation\": $ELEV}," >> strava.json
-          done
-
-          echo "\"updated\": \"$(date)\"}" >> strava.json
-
-      - name: Commit results
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          commit_message: "Update Strava yearly summary"
-          file_pattern: strava.json
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run Strava script
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+        run: python scripts/update_strava.py
+
+      - name: Commit and push if changes
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add strava_stats.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Strava stats" && git push)
