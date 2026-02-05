@@ -1,22 +1,20 @@
-name: Update Strava Stats
+name: Update Strava Yearly Summary
 
 on:
   schedule:
-    - cron: "0 */12 * * *"   # every 12 hours
+    - cron: "0 */12 * * *"
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
 
-      - name: Get Strava Access Token
-        id: gettoken
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get Access Token
         run: |
-          RESPONSE=$(curl -s -X POST \
-            https://www.strava.com/oauth/token \
+          RESPONSE=$(curl -s -X POST https://www.strava.com/oauth/token \
             -d client_id=${{ secrets.CLIENT_ID }} \
             -d client_secret=${{ secrets.CLIENT_SECRET }} \
             -d grant_type=refresh_token \
@@ -24,27 +22,27 @@ jobs:
 
           echo "ACCESS_TOKEN=$(echo $RESPONSE | jq -r .access_token)" >> $GITHUB_ENV
 
-      - name: Fetch activities for this year
+      - name: Fetch activities this year
         run: |
-          YEAR_START=$(date -d "$(date +%Y)-01-01" +%s)
-          ACCESS_TOKEN=${ACCESS_TOKEN}
+          START=$(date -d "$(date +%Y)-01-01" +%s)
 
           curl -s -G https://www.strava.com/api/v3/athlete/activities \
-            -d after=$YEAR_START \
+            -d after=$START \
             -d per_page=200 \
             -H "Authorization: Bearer $ACCESS_TOKEN" \
-            > strava_raw.json
+            > activities.json
 
-      - name: Process data
+      - name: Build yearly summary
         run: |
           echo "{" > strava.json
 
           for sport in Run Ride Swim; do
-            DIST=$(jq "[.[] | select(.sport_type==\"${sport}\") | .distance] | add // 0" strava_raw.json)
-            TIME=$(jq "[.[] | select(.sport_type==\"${sport}\") | .moving_time] | add // 0" strava_raw.json)
-            COUNT=$(jq "[.[] | select(.sport_type==\"${sport}\")] | length" strava_raw.json)
+            DIST=$(jq "[.[] | select(.sport_type==\"$sport\") | .distance] | add // 0" activities.json)
+            TIME=$(jq "[.[] | select(.sport_type==\"$sport\") | .moving_time] | add // 0" activities.json)
+            COUNT=$(jq "[.[] | select(.sport_type==\"$sport\")] | length" activities.json)
+            ELEV=$(jq "[.[] | select(.sport_type==\"$sport\") | .total_elevation_gain] | add // 0" activities.json)
 
-            echo "\"${sport}\": {\"distance\": $DIST, \"time\": $TIME, \"count\": $COUNT}," >> strava.json
+            echo "\"$sport\": {\"distance\": $DIST, \"time\": $TIME, \"count\": $COUNT, \"elevation\": $ELEV}," >> strava.json
           done
 
           echo "\"updated\": \"$(date)\"}" >> strava.json
@@ -52,5 +50,5 @@ jobs:
       - name: Commit results
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Update Strava stats"
+          commit_message: "Update Strava yearly summary"
           file_pattern: strava.json
