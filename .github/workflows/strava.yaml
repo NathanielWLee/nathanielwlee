@@ -32,6 +32,11 @@ jobs:
             -H "Authorization: Bearer $ACCESS_TOKEN" \
             > activities.json
 
+      - name: Debug Strava response
+        run: |
+          echo "===== activities.json ====="
+          cat activities.json
+          
       - name: Build yearly summary
         run: |
           echo "{" > strava.json
