@@ -1,4 +1,4 @@
-name: Update Strava Stats
+name: Update Strava Sta
 
 on:
   schedule:
