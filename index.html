@@ -502,12 +502,57 @@
     <!-- Strava Section -->
     <section id="strava" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">My Year on Strava</h2>
-            <div class="max-w-6xl mx-auto">
-                <div id="strava-yearly" class="text-center text-white"></div>
+            <h2 class="text-3xl font-bold mb-8 text-center">Yearly Activity Summary</h2>
+            <div id="strava-content" class="grid md:grid-cols-3 gap-6">
+            <!-- JS injects content here -->
             </div>
+            <p id="strava-updated" class="mt-6 text-center text-sm opacity-60"></p>
         </div>
     </section>
+    
+    <script>
+        fetch("strava.json")
+          .then(res => res.json())
+          .then(data => {
+            const container = document.getElementById("strava-content");
+        
+            function formatTime(seconds) {
+              const h = Math.floor(seconds / 3600);
+              const m = Math.floor((seconds % 3600) / 60);
+              const s = seconds % 60;
+              return `${h}h ${m}m ${s}s`;
+            }
+        
+            function miles(m) {
+              return (m / 1609.34).toFixed(1);
+            }
+        
+            function feet(m) {
+              return Math.round(m * 3.28084);
+            }
+        
+            function block(title, stats, unit) {
+              return `
+                <div class="p-6 rounded-xl bg-dark-bg/70 border border-gray-700">
+                  <h3 class="text-xl font-semibold mb-4">${title}</h3>
+                  <p>Activities: <strong>${stats.count}</strong></p>
+                  <p>Distance: <strong>${unit === "yd" ? stats.distance : miles(stats.distance)} ${unit}</strong></p>
+                  ${stats.elevation !== undefined ? `<p>Elev Gain: <strong>${feet(stats.elevation)} ft</strong></p>` : ""}
+                  <p>Time: <strong>${formatTime(stats.time)}</strong></p>
+                </div>
+              `;
+            }
+        
+            container.innerHTML = `
+              ${block("🏃 Running", data.Run, "mi")}
+              ${block("🚴 Cycling", data.Ride, "mi")}
+              ${block("🏊 Swimming", data.Swim, "yd")}
+            `;
+        
+            document.getElementById("strava-updated").textContent =
+              `Updated: ${data.updated}`;
+          });
+    </script>
                 
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-dark-card/30">
@@ -577,31 +622,7 @@
         </div>
     </footer>
 
-    <script>
-        // Strava
-        fetch("strava.json").then(r => r.json()).then(data => {
-            const div = document.getElementById("strava-yearly");
-            function formatTime(sec) {
-                const h = Math.floor(sec/3600);
-                const m = Math.floor((sec%3600)/60);
-                return `${h}h ${m}m`;
-            }
-            function block(sport, label) {
-                return `<div class="p-6 rounded-xl bg-dark-bg/50 border border-gray-700">
-                    <h2 class="text-xl font-bold mb-2">${label}</h2>
-                    <p><strong>${(data[sport].distance/1000).toFixed(1)} km</strong></p>
-                    <p>${formatTime(data[sport].time)}</p>
-                    <p>${data[sport].count} activities</p>
-                </div>`;
-            }
-            div.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                ${block("Run", "Running")}
-                ${block("Ride", "Cycling")}
-                ${block("Swim", "Swimming")}
-            </div>
-            <p class="mt-4 text-sm opacity-60">Updated: ${data.updated}</p>`;
-        });
-        
+    <script>    
         // Mobile menu toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
