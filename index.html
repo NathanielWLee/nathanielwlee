@@ -11,13 +11,10 @@
     <meta property="og:description" content="A Northern Lights inspired portfolio template with dark mode aesthetic">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <!-- Custom Tailwind Config -->
     <script>
         tailwind.config = {
@@ -74,7 +71,6 @@
             }
         }
     </script>
-
     <style>
         /* Aurora gradient background */
         .aurora-bg {
@@ -82,7 +78,6 @@
             background-size: 400% 400%;
             animation: aurora 15s ease infinite;
         }
-
         /* Aurora light effect overlay */
         .aurora-overlay {
             position: fixed;
@@ -98,26 +93,21 @@
             pointer-events: none;
             opacity: 0.7;
         }
-
         /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
-
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
-
         ::-webkit-scrollbar-track {
             background: #0a0e1a;
         }
-
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(to bottom, #00ffaa, #00aaff);
             border-radius: 5px;
         }
-
         /* Gradient text */
         .gradient-text {
             background: linear-gradient(135deg, #00ffaa 0%, #00aaff 50%, #aa00ff 100%);
@@ -125,24 +115,20 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         /* Card hover effect */
         .card-hover {
             transition: all 0.3s ease;
             border: 1px solid transparent;
         }
-
         .card-hover:hover {
             border-color: #00ffaa;
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 255, 170, 0.2);
         }
-
         /* Progress bar animation */
         @keyframes progressAnimation {
             0% { width: 0%; }
         }
-
         .progress-bar {
             animation: progressAnimation 2s ease-out forwards;
         }
@@ -199,10 +185,6 @@
                 <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-12">Current MSCS at University of Texas at Austin</p>
                 <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-12">Experience in Software Development and IT at General Motors</p>
                 <a href="resume.pdf" download class="px-8 py-3 border-2 border-aurora-green rounded-full hover:bg-aurora-green hover:text-dark-bg transition transform hover:scale-105">Download CV</a>
-                <div class="mt-12 flex justify-center space-x-4">
-                    <a href="https://www.linkedin.com/in/nathaniel-l-658458187" class="text-2xl hover:text-aurora-blue transition"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/NathanielWLee" class="text-2xl hover:text-aurora-green transition"><i class="fab fa-github"></i></a>
-                </div>
             </div>
         </div>
         <!-- Animated particles -->
@@ -355,7 +337,7 @@
                     <h3 class="text-xl font-semibold mb-4 text-aurora-green">Languanges and Technologies</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div class="bg-dark-card p-4 rounded-lg text-center card-hover">
-                            <i class="fa-brands fa-java"></i>
+                            <i class="fab fa-java"></i>
                             <p>Java</p>
                         </div>
                         <div class="bg-dark-card p-4 rounded-lg text-center card-hover">
@@ -369,6 +351,10 @@
                         <div class="bg-dark-card p-4 rounded-lg text-center card-hover">
                             <i class="fas fa-code"></i>
                             <p>HTML</p>
+                        </div>
+                        <div class="bg-dark-card p-4 rounded-lg text-center card-hover">
+                            <i class="fa-brands fa-css fa-flip-both fa-2xl" style="color: #B197FC;"></i>
+                            <p>CSS</p>
                         </div>
                         <div class="bg-dark-card p-4 rounded-lg text-center card-hover">
                             <i class="fas fa-database"></i>
