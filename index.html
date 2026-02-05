@@ -512,6 +512,16 @@
             </div>
         </div>
     </section>
+
+    <!-- Strava Section -->
+    <section id="strava" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">My Year on Strava</h2>
+            <div class="max-w-6xl mx-auto">
+                <div id="strava-yearly" class="text-center text-white"></div>
+            </div>
+        </div>
+    </section>
                 
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-dark-card/30">
@@ -526,7 +536,7 @@
                             </div>
                             <div>
                                 <p class="text-gray-400">Email</p>
-                                <p>nwlee@utexas</p>
+                                <p>nwlee@utexas.edu</p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-4">
@@ -566,15 +576,6 @@
             </div>
         </div>
     </section>
-
-    <section id="strava" class="py-20">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">My Year on Strava</h2>
-            <div class="max-w-6xl mx-auto">
-                <div id="strava-yearly" class="text-center text-white"></div>
-            </div>
-        </div>
-    </section>
     
     <!-- Footer -->
     <footer class="py-8 border-t border-dark-border">
@@ -591,25 +592,46 @@
     </footer>
 
     <script>
+        // Strava
+        fetch("strava.json").then(r => r.json()).then(data => {
+            const div = document.getElementById("strava-yearly");
+            function formatTime(sec) {
+                const h = Math.floor(sec/3600);
+                const m = Math.floor((sec%3600)/60);
+                return `${h}h ${m}m`;
+            }
+            function block(sport, label) {
+                return `<div class="p-6 rounded-xl bg-dark-bg/50 border border-gray-700">
+                    <h2 class="text-xl font-bold mb-2">${label}</h2>
+                    <p><strong>${(data[sport].distance/1000).toFixed(1)} km</strong></p>
+                    <p>${formatTime(data[sport].time)}</p>
+                    <p>${data[sport].count} activities</p>
+                </div>`;
+            }
+            div.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                ${block("Run", "Running")}
+                ${block("Ride", "Cycling")}
+                ${block("Swim", "Swimming")}
+            </div>
+            <p class="mt-4 text-sm opacity-60">Updated: ${data.updated}</p>`;
+        });
+        
         // Mobile menu toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
         }
-
         // Close mobile menu when clicking on a link
         document.querySelectorAll('#mobileMenu a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('mobileMenu').classList.add('hidden');
             });
         });
-
         // Add animation on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
         };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -617,12 +639,10 @@
                 }
             });
         }, observerOptions);
-
         // Observe sections for animation
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
         });
-
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -636,10 +656,9 @@
                 }
             });
         });
-
         // animated particles
         const auroraColors = ["bg-aurora-green", "bg-aurora-blue", "bg-aurora-purple", "bg-aurora-pink", "bg-aurora-red", "bg-aurora-yellow", "bg-aurora-orange"];
-        const numberOfDots = 70;
+        const numberOfDots = 26;
         const container = document.getElementById("floating-dots-container");
         function createRandomDot() {
             const dot = document.createElement("div");
@@ -685,38 +704,6 @@
         for (let i = 0; i < numberOfDots; i++) {
             createRandomDot();
         }
-
-        fetch("strava.json")
-  .then(r => r.json())
-  .then(data => {
-    const div = document.getElementById("strava-yearly");
-
-    function formatTime(sec) {
-      const h = Math.floor(sec/3600);
-      const m = Math.floor((sec%3600)/60);
-      return `${h}h ${m}m`;
-    }
-
-    function block(sport, label) {
-      return `
-        <div class="p-6 rounded-xl bg-dark-bg/50 border border-gray-700">
-          <h2 class="text-xl font-bold mb-2">${label}</h2>
-          <p><strong>${(data[sport].distance/1000).toFixed(1)} km</strong></p>
-          <p>${formatTime(data[sport].time)}</p>
-          <p>${data[sport].count} activities</p>
-        </div>
-      `;
-    }
-
-    div.innerHTML = `
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        ${block("Run", "Running")}
-        ${block("Ride", "Cycling")}
-        ${block("Swim", "Swimming")}
-      </div>
-      <p class="mt-4 text-sm opacity-60">Updated: ${data.updated}</p>
-    `;
-  });
     </script>
 </body>
 </html>
