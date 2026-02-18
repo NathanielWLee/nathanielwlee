@@ -1,1 +1,1 @@
-{"run": {"count": 4, "distance": 29551, "moving_time": 9658.0, "elevation_gain": 420}, "ride": {"count": 0, "distance": 0, "moving_time": 0, "elevation_gain": 0}, "swim": {"count": 0, "distance": 0, "moving_time": 0, "elevation_gain": 0}}
+{"run": {"count": 4, "distance": 29551, "moving_time": 9658.0, "elevation_gain": 420}, "ride": {"count": 1, "distance": 26778, "moving_time": 3861.0, "elevation_gain": 239}, "swim": {"count": 0, "distance": 0, "moving_time": 0, "elevation_gain": 0}}
