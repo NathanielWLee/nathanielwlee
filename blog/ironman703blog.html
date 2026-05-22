@@ -1,24 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <link rel="icon" href="ironman.ico" />
+    <link rel="icon" href="../ironman.ico" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ironman 70.3 Ohio Race Report</title>
-    <meta name="description" content="A modern dark portfolio template inspired by the Northern Lights with comprehensive sections and smooth animations">
-    <meta property="og:title" content="Aurora Portfolio Template">
-    <meta property="og:description" content="A Northern Lights inspired portfolio template with dark mode aesthetic">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
   
-    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-  
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-    <!-- Custom Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
@@ -37,37 +28,11 @@
                     },
                     animation: {
                         'aurora': 'aurora 15s ease-in-out infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s ease-in-out infinite',
-                        'slide-up': 'slideUp 0.5s ease-out',
-                        'glow': 'glow 2s ease-in-out infinite'
                     },
                     keyframes: {
                         aurora: {
-                            '0%, 100%': {
-                                backgroundPosition: '0% 50%',
-                                backgroundSize: '200% 200%'
-                            },
-                            '50%': {
-                                backgroundPosition: '100% 50%',
-                                backgroundSize: '200% 200%'
-                            }
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' }
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(20px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' }
-                        },
-                        glow: {
-                            '0%, 100%': {
-                                boxShadow: '0 0 5px rgba(0, 255, 170, 0.5), 0 0 20px rgba(0, 255, 170, 0.3)'
-                            },
-                            '50%': {
-                                boxShadow: '0 0 20px rgba(0, 170, 255, 0.8), 0 0 40px rgba(0, 170, 255, 0.4)'
-                            }
+                            '0%, 100%': { backgroundPosition: '0% 50%', backgroundSize: '200% 200%' },
+                            '50%': { backgroundPosition: '100% 50%', backgroundSize: '200% 200%' }
                         }
                     }
                 }
@@ -82,125 +47,162 @@
         }
         .aurora-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100vh;
+            top: 0; left: 0; right: 0; height: 100vh;
             background:
                 radial-gradient(ellipse at top left, rgba(0, 255, 170, 0.15) 0%, transparent 40%),
                 radial-gradient(ellipse at top right, rgba(0, 170, 255, 0.15) 0%, transparent 40%),
                 radial-gradient(ellipse at bottom left, rgba(170, 0, 255, 0.1) 0%, transparent 40%),
                 radial-gradient(ellipse at bottom right, rgba(255, 0, 170, 0.1) 0%, transparent 40%);
-            pointer-events: none;
-            opacity: 0.7;
+            pointer-events: none; opacity: 0.7; z-index: 0;
         }
         html {scroll-behavior: smooth;}
         ::-webkit-scrollbar {width: 10px;}  
         ::-webkit-scrollbar-track {background: #0a0e1a;}
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, #00ffaa, #00aaff);
-            border-radius: 5px;
-        }
+        ::-webkit-scrollbar-thumb {background: linear-gradient(to bottom, #00ffaa, #00aaff); border-radius: 5px;}
         .gradient-text {
             background: linear-gradient(135deg, #00ffaa 0%, #00aaff 50%, #aa00ff 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .card-hover {
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-        .card-hover:hover {
-            border-color: #00ffaa;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 255, 170, 0.2);
-        }
-        @keyframes progressAnimation {0% { width: 0%; }}
-        .progress-bar {animation: progressAnimation 2s ease-out forwards;}
     </style>
-    <title>Ironman 70.3 Ohio Race Report</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/styles.css">
   </head>
   
-  <body class="bg-dark-bg text-gray-200 aurora-bg">
+  <body class="bg-dark-bg text-gray-200 aurora-bg min-h-screen flex flex-col">
     <div class="aurora-overlay"></div>
+    
     <nav class="fixed top-0 w-full bg-dark-bg/90 backdrop-blur-md border-b border-dark-border z-50">
         <div class="container mx-auto px-6 py-3">
-            <div class="flex justify-between items-center">
-                <!-- <div class="text-2xl font-bold gradient-text">NL</div> -->
-                <a href="/" class="inline-block no-underline hover:opacity-80 transition-opacity">
-                    <div class="text-2xl font-bold gradient-text">NL</div>
+            <div class="flex items-center">
+                <a href="../index.html" class="inline-block no-underline hover:opacity-80 transition-opacity">
+                    <div class="text-2xl font-bold gradient-text"><i class="fas fa-arrow-left text-sm mr-2"></i>NL</div>
                 </a>
             </div>
         </div>
     </nav>
     
-    <article>
-      <h1>Ironman 70.3 Ohio Race Report</h1>
-      <p><em>Published: 2025-07-20</em></p>
-      <p>My Ironman 70.3 Ohio Journey: From Self-Doubt to the Finish Line</p>
-    </article>
+    <main class="flex-grow pt-32 pb-20 relative z-10">
+        <article class="container mx-auto px-6 max-w-3xl">
+            
+            <header class="mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text pb-2 leading-tight">Breaking the System: How My "Race-Day" Mentality Survived My First Ironman 70.3</h1>
+                <div class="flex items-center text-gray-400 text-sm">
+                    <span><i class="far fa-calendar-alt mr-2"></i>July 20, 2025</span>
+                    <span class="mx-3">•</span>
+                    <span><i class="far fa-clock mr-2"></i>10 min read</span>
+                </div>
+            </header>
+
+            <div class="mb-12 relative group rounded-xl overflow-hidden border border-dark-border bg-dark-card shadow-lg">
+                <img src="../images/ironman-ohio.jpg" alt="Ironman 70.3 Ohio Race Day" class="w-full h-auto object-cover opacity-90 transition duration-300">
+            </div>
+
+            <div class="text-gray-300 text-lg leading-relaxed space-y-6">
+                
+                <p>I showed up to Sandusky, Ohio entirely alone. No support crew, no family, no friends cheering at the barriers. Honestly, It didn’t matter. The vibes at Ironman 70.3 Ohio were completely immaculate. When you have thousands of absolute strangers screaming your name, you don't need a personal fan club.</p>
+                <p>But I’d be lying if I said I wasn’t sweating a little before the race even started.</p>
+                <p>Walking into athlete check-in on a baking-hot Saturday, the imposter syndrome hit hard. It felt like every person I bumped into was a former Division 1 collegiate athlete. Everyone looked impossibly fit, riding five-figure time-trial bikes, looking like they did half-Ironmans on a casual Tuesday.</p>
+                <p>Then there was me. A small guy who just wanted a challenge.</p>
+                <p>This was only my third triathlon ever. I had done a sprint a year ago and an Olympic distance just four weeks prior. I’ve always had the engine for endurance running. I grew up playing soccer, though I used to find running by itself incredibly boring. That changed my sophomore year of college when I signed up for a half-marathon on a whim during peak flu season, did zero training, and accidentally dropped a killer 1:45. I was instantly hooked on endurance.</p>
+                <p>After graduating in 2022, I finally found my people. We formed a local triathlon group, constantly pushing each other to PR. But while my friends opted to race Ironman 70.3 Michigan, I wanted to head back to my home state to tackle Ohio. For the first time, I was flying solo.</p>
+
+                <h2 class="text-3xl font-bold mt-16 mb-6 text-aurora-blue border-b border-dark-border pb-2">The Strategy (Or Lack Thereof)</h2>
+                
+                <p>Within our group, I am notoriously known as the "race-day athlete."</p>
+                <p>I don't believe in Zone 2 training. I don't do interval structures. Every training session I've ever done has just been a threshold long run, ride, or swim. I am a chronic procrastinator who crams 90% of my training into the final month before an event. While my friends were pulling grueling 20+ hour training weeks, I capped myself at 10 to 15 hours. My race-day personality just couldn't handle more than that without getting annoyed with the sport.</p>
+
+                <blockquote class="border-l-4 border-aurora-purple pl-6 py-2 my-10 italic text-xl text-gray-400 bg-dark-card/50 rounded-r-lg">
+                    "I do these things for the medals, the photos, the memories, the t-shirt, and, let's be real, the bragging rights."
+                </blockquote>
+
+                <p>So, when it came to race weekend lodging, I took the budget route. AirBnBs in Sandusky during peak summer are criminally expensive, so I opted to sleep in the back of my car in a parking lot. It was 75 degrees at night and the windows fogged up instantly, but surprisingly, I slept like a baby. I wouldn’t do it again, but hey, it worked.</p>
+
+                <h2 class="text-3xl font-bold mt-16 mb-6 text-aurora-green border-b border-dark-border pb-2">The Swim: Lake Erie Chooses Violence</h2>
+                
+                <p>Pre-race morning was a blur of darkness, nerves, and fields of $10,000 super-bikes.</p>
+                <p>Swimming is my kryptonite. In a calm pool, I can hold a respectable 1:50/100m. In open water, my vision goes out the window, I can't swim straight to save my life, and I drop to a 2:50/100m pace. As the sun began to rise, the coordinators announced the water temperature: not wetsuit legal.</p>
+                <p>I didn't have a high-tech swim skin or a fancy trisuit underneath. I just had to squeeze into my absurdly tight wetsuit anyway, knowing I’d take a time penalty but needing the buoyancy to survive. Standing in line, sweating like a pig in the morning heat, I watched people dancing and laughing with their families. For a split second, I wished I had someone there with me.</p>
+                <p>Then, right before the horn, the athlete next to me snapped their goggles. It was a nightmare scenario, but the triathlon community is legendary. Another racer immediately handed them a backup pair. I fist-bumped the guy next to me, he told me to have fun, and I dove into Lake Erie.</p>
+
+                <div class="bg-dark-card p-6 rounded-lg my-10 border border-dark-border shadow-lg font-mono text-sm">
+                    <p class="text-aurora-green mb-3"><span class="text-gray-500">></span> First thought: Holy crap, this water is warm.</p>
+                    <p class="text-aurora-red"><span class="text-gray-500">></span> Second thought: Lake Erie has chosen violence today.</p>
+                </div>
+
+                <p>An incoming storm system had kicked up 15+ mph winds, turning the bay into a washing machine. Every time I turned my head to breathe, a wave would smash me square in the face. By 400 meters, I finally found a rhythm. I focused on staying calm, navigating the chaos, and dodging the stray kicks to the face that come with a mass swim start.</p>
+                <p>With half a mile to go, my swim cap started slipping off and my goggles began to fog. Old me would have panicked. Instead, I flipped onto my back for a few seconds, adjusted my gear, and kept moving. Feeling good, I sprinted the final stretch to the boat docks.</p>
+
+                <p class="text-2xl font-bold text-center my-10 gradient-text">Swim Time: 46:18 (2:24/100m avg)</p>
+
+                <p>Given the massive swells, I had fully expected a 1:00+ time. Overperforming my own expectations gave me an instant surge of confidence. I deliberately walked through Transition 1 to avoid the post-swim dizziness, grabbed my bike, and headed out.</p>
+
+                <h2 class="text-3xl font-bold mt-16 mb-6 text-aurora-pink border-b border-dark-border pb-2">The Bike: Aerodynamics on a Budget</h2>
+                
+                <p>As I sped out onto the road, I looked down at the empty mounts on my bike and realized something hilarious: I had left my entire tire repair kit and maintenance tools sitting on the grass in transition. No insurance. If I got a flat, my race was over. Oopsies. Guess we're riding on faith.</p>
+                <p>The bike is my absolute favorite discipline. The wind died down, the clouds rolled in to block the sun, and the flat, rural Ohio roads were beautiful.</p>
+                
+                <p class="font-semibold text-gray-200 mt-8 mb-4">But I made two critical mistakes within the first hour:</p>
+                <ol class="list-decimal pl-6 space-y-3 mb-8 text-gray-400">
+                    <li><strong class="text-white">I forgot to apply anti-chafing cream to my chamois pad.</strong> I was chafing like crazy by mile 20.</li>
+                    <li><strong class="text-white">I had never practiced grabbing a bottle from an aid station at speed.</strong> When I tried, I completely launched a water bottle 60 feet into a field. It was embarrassing, but I managed to grab a few GU gels on the fly.</li>
+                </ol>
+
+                <p>My fueling strategy was equally chaotic. You’re supposed to consume around 60–90 grams of carbs (roughly two gels) per hour. My small stomach simply isn't used to that. Terrified of a mid-race GI explosion, I had only taken one gel and one energy waffle by the halfway point.</p>
+                <p>Despite the lack of fuel, I felt like a absolute rocket. I was riding an entry-level aluminum road bike with basic clip-on aero bars, but I passed well over 100 riders, many of whom were spinning on those $10,000 TT bikes I’d envied earlier.</p>
+                <p>I hammered the final mile downhill into T2, averaging a flat 20.0 mph over the 56 miles. I hit my exact goal. There was only one massive problem: I still had to run a half-marathon.</p>
+
+                <h2 class="text-3xl font-bold mt-16 mb-6 text-aurora-red border-b border-dark-border pb-2">The Run: Welcome to the Dark Place</h2>
+                
+                <p>The second I swung my leg off the saddle, my body revolted. My quads were stiff as boards, and my gooch was screaming from the lack of anti-chafe cream. But as I ran into the transition pavilion, the crowd was deafening. They didn't know who I was, but they were screaming for me anyway. I couldn't help but smile from ear to ear. The adrenaline masked the pain.</p>
+                <p>Before the race, I thought a sub-2-hour half marathon would be "easy peasy." I had done a dozen of them in training.</p>
+                <p>Then I saw the run course layout: a brutal two-loop format where the first half of every loop was entirely uphill.</p>
+
+                <p class="font-bold text-xl text-center text-aurora-red my-10 px-8">Within the first 100 meters of running, my brain clicked: I am absolutely screwed.</p>
+
+                <p>My hopes of a sub-6-hour total time began to evaporate. My 9:00/mile pace quickly slipped to 9:30, then to 10:00 by mile 3. My body wasn't cramping, and my breathing was fine, but my brain was literally shutting down from starvation. My failure to carb-load on the bike had caught up to me. I hit the wall harder than I ever have in my six years of endurance sports.</p>
+                <p>At mile 4, with 9 miles left to go, I was on the verge of tears. I genuinely contemplated walking the rest of the way or quitting entirely. I felt like I had been awake for 72 straight hours.</p>
+                <p>I forced myself to pivot. The aid stations were spaced one mile apart. My new goal was simple: run to an aid station, choke down as much food as humanly possible, walk for a minute to regroup, and run to the next one.</p>
+                <p>During this dark period, I noticed an older gentleman utilizing the exact same strategy. Without speaking a word, we silently locked eyes and formed an unspoken pact to run together. He was pushing a 9:30 pace, faster than I wanted to go, but I knew if I let him drop me, my race would die right there. He gave me words of encouragement as we finished the first loop. He was a full Ironman finisher; he knew exactly what this pain felt like.</p>
+                <p>By mile 9, the wheels completely came off. "Drop me," I told him. "I have to walk."</p>
+                <p>I stood there on the side of the road and openly cried as runners streamed past me. The sub-6-hour goal was gone. He turned back, hugged me, and said, "Don't you dare give up." He told me he’d see me at the finish line.</p>
+                <p>I watched him run away, took a deep breath, and kept moving at a survivalist 10:30 pace, shoving literally everything into my face. By mile 10, I had consumed six bananas, three energy bars, two GUs, and a liter of water on the run alone.</p>
+
+                <p class="font-bold text-xl text-center text-aurora-yellow my-10">And then, the sugars finally hit my bloodstream.</p>
+
+                <h2 class="text-3xl font-bold mt-16 mb-6 text-aurora-orange border-b border-dark-border pb-2">The Anime Comeback</h2>
+                
+                <p>In what felt like a literal cinematic movie moment, my brain turned back on. I looked down, whispered "Go time," and picked up my stride.</p>
+                <p>The pace dropped from 10:30, to 9:00, to an 8:30/mile. The final stretch of the course was entirely downhill. I entered a complete flow state. I started flying past the exact same familiar faces that had passed me while I was crying two miles earlier. The spectator noise rushed back into my ears. The smile returned.</p>
+                <p>With half a mile left, I checked my total elapsed race time and realized the math: I was tracking to finish around 5:53. Not only was I going to break 6 hours, I was going to beat my own prediction by seven minutes.</p>
+                <p>I started sprinting at an 7:30/mile pace, tears streaming down my face from pure adrenaline. I ran past the course volunteer with the megaphone guiding multi-lap runners, stopped dead in my tracks, threw my arms around him, and screamed, "FINALLY!"</p>
+                <p>Then, I turned the corner and hit the coveted red-and-black Ironman carpet—a carpet I had dreamed of running down for six long years.</p>
+
+                <div class="bg-dark-card border-2 border-aurora-green rounded-xl p-10 text-center my-14 transform hover:scale-105 transition duration-300 shadow-[0_0_30px_rgba(0,255,170,0.2)]">
+                    <p class="text-aurora-green uppercase tracking-widest text-sm mb-3 font-bold">Official Finish Time</p>
+                    <p class="text-5xl md:text-7xl font-bold text-white tracking-tight">5:52:06</p>
+                </div>
+
+                <h2 class="text-3xl font-bold mt-16 mb-6 gradient-text border-b border-dark-border pb-2">More Than a Medal</h2>
+                
+                <p>They handed me my finisher medal and the classic Ironman cap. The sheer swagger of that hat and the weight of the medal embodied every single ounce of adversity I had just spent nearly six hours fighting through.</p>
+                <p>As I stood in the post-race chute recovering, I looked around for the man who saved my race. A few minutes later, I saw him coming down the carpet. I walked over, we embraced in a huge hug, and he looked at me and smiled: "I told you you’d never give up."</p>
+                <p>I never caught his last name, but I will cherish that father-son moment for the rest of my life. Endurance sports aren't actually about beating the person next to you; they’re about human beings keeping each other alive as they push themselves to the absolute edge of their limits. Thank you, Michael.</p>
+                <p>The triathlon community is unlike anything else on earth. After the race, I hung out around the transition area for an hour just talking to total strangers. In marathons, everyone finishes and leaves. Here, everyone stays to check on each other, trade war stories, and share a mutual respect for the distance.</p>
+                <p>My "race-day athlete" habits allowed me to survive Ohio, but a full 140.6 Ironman is waiting for me in the future. And for that one? I think I might actually have to learn to love Zone 2.</p>
+
+                <p class="text-xl italic text-gray-500 mt-12 text-center pb-8 border-b border-dark-border">Until the next start line.</p>
+            </div>
+        </article>
+    </main>
     
-    <!-- Footer -->
-    <footer class="py-8 border-t border-dark-border">
+    <footer class="py-8 z-10 relative">
         <div class="container mx-auto px-6 text-center">
             <div class="mb-4 flex justify-center space-x-4">
-                <a href="https://www.strava.com/athletes/115560027" class="text-2xl hover:text-aurora-orange transition"><i class="fab fa-strava"></i></a>
+                <a href="https://www.strava.com/athletes/115560027" target="_blank" class="text-2xl hover:text-aurora-orange transition"><i class="fab fa-strava"></i></a>
             </div>
-            <p class="text-gray-400">
-                © 2025 Nathaniel Lee
+            <p class="text-gray-500 text-sm">
+                © 2026 Nathaniel Lee
             </p>
         </div>
     </footer>
     
-    <script>
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobileMenu').classList.add('hidden');
-            });
-        });
-
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-slide-up');
-                }
-            });
-        }, observerOptions);
-
-        // Observe sections for animation
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-      </script>
   </body>
 </html>
